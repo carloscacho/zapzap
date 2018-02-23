@@ -9,7 +9,7 @@ const FormsStyles = StyleSheet.create({
         backgroundColor: '#115E54aa'
     },
     containerTitle: {
-        flex: 3,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -29,6 +29,10 @@ const FormsStyles = StyleSheet.create({
     texts: {
         fontSize: 20,
         color: '#fff',
+    },
+    textErro: {
+        fontSize: 20,
+        color: 'red'
     }
 });
 
