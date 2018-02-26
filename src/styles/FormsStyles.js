@@ -13,9 +13,20 @@ const FormsStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    containerLogo: {
+        flex: 2,
+        padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    containerButton: {
+        flex: 1,
+        padding: 50,
+    },
     containers: {
         flex: 2,
-        padding: 20
+        padding: 20,
+        justifyContent: 'center',
     },
     title: {
         color: 'white',
@@ -33,7 +44,12 @@ const FormsStyles = StyleSheet.create({
     textErro: {
         fontSize: 20,
         color: 'red'
-    }
+    },
+    img: {
+        width: 220,
+        height: 220
+    },
+    
 });
 
 

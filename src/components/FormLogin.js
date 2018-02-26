@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -14,61 +14,83 @@ import { connect } from 'react-redux';
 import FormsStyles from '../styles/FormsStyles';
 
 //actions
-import { modificaEmail, modificaSenha } from '../actions/AuthActions';
+import { 
+    modificaEmail,
+    modificaSenha,
+    autenticaUsuario
+} from '../actions/AuthActions';
 
 //img
 const back = require('../../assets/imagens/fundo.png');
 
-const FormLogin = (props) => (
-<ImageBackground style={FormsStyles.main} source={back}>
-    <View style={FormsStyles.main}>
-        <View style={FormsStyles.containerTitle}>
-            <Text style={FormsStyles.title}>
-                Zap Zap
-            </Text>
-        </View>
+class FormLogin extends Component {
+    internalAutenticaUsuario() {
+        const { email, senha } = this.props;
 
-        <View style={FormsStyles.containers}>
-            <TextInput 
-                placeholder='Email'
-                style={FormsStyles.inputs}
-                value={props.email}
-                placeholderTextColor='#fff'
-                onChangeText={(texto) => props.modificaEmail(texto)}
-            />
-            <TextInput 
-                placeholder='Senha'
-                secureTextEntry
-                style={FormsStyles.inputs}
-                value={props.senha}
-                placeholderTextColor='#fff'
-                onChangeText={(texto) => props.modificaSenha(texto)}
-            />
-            <TouchableHighlight
-                onPress={() => Actions.FormCadastro()}
-            >
-                <Text style={FormsStyles.texts}> Ainda não tem cadastro? Cadastre-se </Text>
-            </TouchableHighlight>
-        </View>
+        this.props.autenticaUsuario({ email, senha });
+    }
 
-        <View style={FormsStyles.containers}>
-            
-            <Button
-                title='Acessar'
-                onPress={() => false}
-                color='#115E54'
-            />
-        </View>
-    </View>
-</ImageBackground>
-);
+    render() {
+        return (
+            <ImageBackground style={FormsStyles.main} source={back}>
+                <View style={FormsStyles.main}>
+                    <View style={FormsStyles.containerTitle}>
+                        <Text style={FormsStyles.title}>
+                            Zap Zap
+                        </Text>
+                    </View>
+
+                    <View style={FormsStyles.containers}>
+                        <TextInput 
+                            placeholder='Email'
+                            style={FormsStyles.inputs}
+                            value={this.props.email}
+                            placeholderTextColor='#fff'
+                            onChangeText={(texto) => this.props.modificaEmail(texto)}
+                        />
+                        <TextInput 
+                            placeholder='Senha'
+                            secureTextEntry
+                            style={FormsStyles.inputs}
+                            value={this.props.senha}
+                            placeholderTextColor='#fff'
+                            onChangeText={(texto) => this.props.modificaSenha(texto)}
+                        />
+                        <TouchableHighlight
+                            onPress={() => Actions.FormCadastro()}
+                        >
+                            <Text style={FormsStyles.texts}>
+                                Ainda não tem cadastro? Cadastre-se 
+                            </Text>
+                        </TouchableHighlight>
+                    </View>
+
+                    <View style={FormsStyles.containers}>
+                        <Text style={FormsStyles.textErro}>
+                            {this.props.erroLogin}
+                        </Text> 
+                        <Button
+                            title='Acessar'
+                            onPress={() => this.internalAutenticaUsuario()}
+                            color='#115E54'
+                        />
+                        
+                    </View>
+                </View>
+            </ImageBackground>
+        );
+    }
+} 
 
 const mapStateToProps = state => ( 
 { 
     email: state.AuthRdc.email,
-    senha: state.AuthRdc.senha
+    senha: state.AuthRdc.senha,
+    erroLogin: state.AuthRdc.erroLogin
 });
 
 
-export default connect(mapStateToProps, { modificaEmail, modificaSenha })(FormLogin);
+export default connect(mapStateToProps, 
+    { modificaEmail, modificaSenha, autenticaUsuario }
+)(FormLogin);
 
