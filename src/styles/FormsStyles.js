@@ -54,6 +54,25 @@ const FormsStyles = StyleSheet.create({
     },
     navTitle: {
         color: '#fff'
+    },
+    barText: {
+        color: '#fff',
+        fontSize: 20,
+        marginLeft: 20
+    },
+    viewBar: {
+        height: 50,
+        justifyContent: 'center',
+        
+    },
+    tabBar: {
+        backgroundColor: '#115E54',
+        elevation: 0
+    },
+    viewBarAll: {
+        backgroundColor: '#115E54',
+        elevation: 4,
+        marginBottom: 6
     }
     
 });

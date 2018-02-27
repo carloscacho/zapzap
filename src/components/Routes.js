@@ -5,7 +5,7 @@ import { Router, Scene, Stack } from 'react-native-router-flux';
 import FormLogin from './FormLogin';
 import FormCadastro from './FormCadastro';
 import Welcome from './Welcome';
-import ContatosView from './ContatosView';
+import PrincipalView from './PrincipalView';
 
 //styles
 import FormsStyles from '../styles/FormsStyles';
@@ -20,12 +20,14 @@ const Routes = () => (
                 key='BoasVindas' 
                 component={Welcome} 
                 title='Bem Vindo'
+                
             />
             <Scene 
                 hideNavBar
-                key='ContatosView' 
-                component={ContatosView} 
-                title='Contatos'
+                key='PrincipaView' 
+                component={PrincipalView} 
+                title='principal'
+                initial
             />    
         </Stack>
     </Router>

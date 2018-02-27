@@ -70,7 +70,7 @@ const loginSucesso = (dispatch) => {
     dispatch({
         type: types.LOGIN_SUCESSO
     });
-    Actions.ContatosView();
+    Actions.PrincipaView();
 };
 
 const loginErro = (erro, dispatch) => {
