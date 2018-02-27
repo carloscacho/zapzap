@@ -7,11 +7,14 @@ import FormCadastro from './FormCadastro';
 import Welcome from './Welcome';
 import ContatosView from './ContatosView';
 
+//styles
+import FormsStyles from '../styles/FormsStyles';
+
 const Routes = () => (
-    <Router>
+    <Router navigationBarStyle={FormsStyles.navBar} titleStyle={FormsStyles.navTitle}>
         <Stack key="root">       
             <Scene hideNavBar key='FormLogin' component={FormLogin} title='Login' />
-            <Scene hideNavBar key='FormCadastro' component={FormCadastro} title='Cadastro' />
+            <Scene key='FormCadastro' component={FormCadastro} title='Cadastro' />
             <Scene 
                 hideNavBar
                 key='BoasVindas' 

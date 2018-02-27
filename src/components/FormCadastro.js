@@ -4,7 +4,8 @@ import {
   Text,
   TextInput,
   Button,
-  ImageBackground
+  ImageBackground,
+  ActivityIndicator
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -24,6 +25,7 @@ import {
 const back = require('../../assets/imagens/fundo.png');
 
 class FormCadastro extends Component {
+
     verificaCadastraUsuario() {
         this.props.cadastraUsuario({
             nome: this.props.nome,
@@ -32,6 +34,21 @@ class FormCadastro extends Component {
         });
     }
 
+    renderActivity() {
+        return (
+            <ActivityIndicator size='large' />
+        );
+    }
+
+    renderBtnCadastrar() {
+        return (
+            <Button
+                title='Cadastrar'
+                onPress={() => this.verificaCadastraUsuario()}
+                color='#115E54'
+            />
+        );
+    }
 
     render() {
         return (
@@ -77,11 +94,8 @@ class FormCadastro extends Component {
                     </View>
                     
                     <View style={FormsStyles.containers}>
-                        <Button
-                            title='Cadastrar'
-                            onPress={() => this.verificaCadastraUsuario()}
-                            color='#115E54'
-                        />
+                        {this.props.loadingCadastro ? 
+                            this.renderActivity() : this.renderBtnCadastrar()}
                     </View>
                 </View>
             </ImageBackground>

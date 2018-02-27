@@ -1,24 +1,27 @@
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import b64 from 'base-64';
+import { types } from '../utils/types';
 
 export const modificaNome = (texto) => ({
-    type: 'modifica_nome',
+    type: types.MODIFICA_NOME,
     payload: texto
 });
 
 export const modificaEmail = (texto) => ({
-    type: 'modifica_email',
+    type: types.MODIFICA_EMAIL,
     payload: texto
 });
 
 export const modificaSenha = (texto) => ({
-    type: 'modifica_senha',
+    type: types.MODIFICA_SENHA,
     payload: texto
 });
 
 export const cadastraUsuario = ({ nome, email, senha }) => dispatch => {
-        console.log(nome);
+        //inicia o loading
+        dispatch({ type: types.LOADING_CADASTRO });
+        console.log(`usuario ${nome} realizandod tentativa de cadastrado com ${email}`);
         firebase.auth().createUserWithEmailAndPassword(email, senha)
             .then(user => {
                 console.log(`usuario Cadastrado ${user}`);
@@ -36,19 +39,21 @@ export const cadastraUsuario = ({ nome, email, senha }) => dispatch => {
 
 const cadastroUsuarioSucesso = (dispatch) => {
     dispatch({
-        type: 'cadastro_sucesso',
+        type: types.CADASTRO_SUCESSO,
     });
     Actions.BoasVindas();
 };
 
 const cadastroUsuarioErro = (erro, dispatch) => {
     dispatch({
-        type: 'erro_cadastro',
+        type: types.CADASTRO_ERRO,
         payload: erro.message
     });
 };
 
 export const autenticaUsuario = ({ email, senha }) => dispatch => {
+    dispatch({ type: types.LOADING_LOGIN });
+    console.log(`usuario ${email} tentando realizar o login`);
     firebase.auth().signInWithEmailAndPassword(email, senha)
     .then(value => {
         console.log(`Usuario Realizou login ${value}`);
@@ -63,14 +68,14 @@ export const autenticaUsuario = ({ email, senha }) => dispatch => {
 
 const loginSucesso = (dispatch) => {
     dispatch({
-        type: 'login_sucesso'
+        type: types.LOGIN_SUCESSO
     });
     Actions.ContatosView();
 };
 
 const loginErro = (erro, dispatch) => {
     dispatch({
-        type: 'login_erro',
+        type: types.LOGIN_ERRO,
         payload: erro.message
     });
 };

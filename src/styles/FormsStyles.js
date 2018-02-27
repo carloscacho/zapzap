@@ -49,6 +49,12 @@ const FormsStyles = StyleSheet.create({
         width: 220,
         height: 220
     },
+    navBar: {
+        backgroundColor: '#115E54' 
+    },
+    navTitle: {
+        color: '#fff'
+    }
     
 });
 

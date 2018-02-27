@@ -5,7 +5,8 @@ import {
   TextInput,
   Button,
   TouchableHighlight,
-  ImageBackground
+  ImageBackground,
+  ActivityIndicator
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
@@ -28,6 +29,22 @@ class FormLogin extends Component {
         const { email, senha } = this.props;
 
         this.props.autenticaUsuario({ email, senha });
+    }
+
+    renderBtnAcessar() {
+        return (
+        <Button
+            title='Acessar'
+            onPress={() => this.internalAutenticaUsuario()}
+            color='#115E54'
+        />
+        );
+    }
+
+    renderActivity() {
+        return (
+            <ActivityIndicator size='large' />
+        );
     }
 
     render() {
@@ -69,11 +86,8 @@ class FormLogin extends Component {
                         <Text style={FormsStyles.textErro}>
                             {this.props.erroLogin}
                         </Text> 
-                        <Button
-                            title='Acessar'
-                            onPress={() => this.internalAutenticaUsuario()}
-                            color='#115E54'
-                        />
+                        
+                        {this.props.loadingLogin ? this.renderActivity() : this.renderBtnAcessar()}
                         
                     </View>
                 </View>
@@ -86,7 +100,8 @@ const mapStateToProps = state => (
 { 
     email: state.AuthRdc.email,
     senha: state.AuthRdc.senha,
-    erroLogin: state.AuthRdc.erroLogin
+    erroLogin: state.AuthRdc.erroLogin,
+    loadingLogin: state.AuthRdc.loadingLogin
 });
 
 
