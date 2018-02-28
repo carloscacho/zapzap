@@ -1,3 +1,4 @@
+//somente uma coleção de constantes para ser utilizados com REDUX
 export const types = {
     MODIFICA_NOME: 'modifica_nome',
     MODIFICA_EMAIL: 'modifica_email',

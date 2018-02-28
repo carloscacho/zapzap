@@ -14,7 +14,7 @@ import FormsStyles from '../styles/FormsStyles';
 //import { connect } from 'react-redux';
 const logo = require('../../assets/imagens/logo.png');
 
-
+//componete de boas vindas caso o usuario realize o cadastro sem erros 
 const Welcome = () => (
     <View style={FormsStyles.main}>
         <View style={FormsStyles.containerLogo}>
@@ -26,11 +26,10 @@ const Welcome = () => (
         </View>
 
         <View style={FormsStyles.containerButton}>
+            {/* botão para enviar o usuaio para tela de login, apos o cadastro */}
             <Button
-                
                 title='Entrar'
                 onPress={() => Actions.FormLogin()}
-                
             />
         </View>
     </View>

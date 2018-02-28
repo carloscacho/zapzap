@@ -12,6 +12,7 @@ const initialLayout = {
   width: Dimensions.get('window').width,
 };
 
+//os dois compoents que compõem a Cena Principal
 const conversasRoute = () => <ContatosView />;
 const contatosRoute = () => <ConversasView />;
 
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
   }
 });
-
+//Component que implementa duois outros components (Conversas e Contatos) em tabs
 export default class PrincipalView extends React.Component {
   state = {
     index: 0,
@@ -32,13 +33,16 @@ export default class PrincipalView extends React.Component {
 
   internalHandleIndexChange = index => this.setState({ index });
 
+  //TabBarMenu é uma modificação do TabBar padrão da Classe
   internalRenderHeader = props => <TabBarMenu {...props} />;
 
+  //descrição das cenas que irão fazer parte das cena Principal
   internalRenderScene = SceneMap({
     conversas: conversasRoute,
     contatos: contatosRoute,
   });
 
+  //TavViewAnimated somente aceita ele como elemento no Render
   render() {
     return (
       <TabViewAnimated
