@@ -4,6 +4,9 @@ import { View, Text, StatusBar, Image, TouchableHighlight } from 'react-native';
 import { TabBar } from 'react-native-tab-view';
 import { Actions } from 'react-native-router-flux';
 
+import { connect } from 'react-redux';
+import { adicionaNovoContato } from '../../actions/AppActions';
+
 //styles
 import styles from '../../styles/FormsStyles';
 
@@ -27,7 +30,10 @@ const TabBarMenu = (props) => (
             <View style={styles.viewAdd}>
                 {/* botão com uma imagem para add contato */}
                 <TouchableHighlight
-                    onPress={() => Actions.AddContato()}
+                    onPress={() => {
+                        Actions.AddContato();
+                        props.adicionaNovoContato();
+                    }}
                     underlayColor='#114D44'
                 >
                 <Image
@@ -46,4 +52,4 @@ const TabBarMenu = (props) => (
     </View>  
 );
 
-export default TabBarMenu;
+export default connect(null, { adicionaNovoContato })(TabBarMenu);

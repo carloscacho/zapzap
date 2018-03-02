@@ -34,7 +34,7 @@ const Routes = () => (
                 key='PrincipaView' 
                 component={PrincipalView} 
                 title='principal'
-                initial
+                
             />
             {/* rota para cena de adicionar contatos */}
             <Scene 

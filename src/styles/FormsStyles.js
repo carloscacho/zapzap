@@ -23,8 +23,8 @@ const FormsStyles = StyleSheet.create({
         alignItems: 'center',
     },
     containerButton: {
-        flex: 1,
-        padding: 50,
+        flex: 4,
+        padding: 20,
     },
     containers: {
         flex: 2,
@@ -38,7 +38,6 @@ const FormsStyles = StyleSheet.create({
     inputs: {
         fontSize: 20,
         height: 45,
-        color: '#fff'
     },
     texts: {
         fontSize: 20,
@@ -101,6 +100,11 @@ const FormsStyles = StyleSheet.create({
         color: '#fff',
         justifyContent: 'center',
         marginLeft: 20
+    },
+    //add contato
+    containerAdd: {
+        flex: 1,
+        justifyContent: 'center'
     }
     
 });
