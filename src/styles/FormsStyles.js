@@ -22,6 +22,12 @@ const FormsStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    containerWelcome: {
+        flex: 6,
+        padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     containerButton: {
         flex: 4,
         padding: 20,

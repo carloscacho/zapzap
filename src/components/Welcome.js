@@ -17,7 +17,7 @@ const logo = require('../../assets/imagens/logo.png');
 //componete de boas vindas caso o usuario realize o cadastro sem erros 
 const Welcome = () => (
     <View style={FormsStyles.main}>
-        <View style={FormsStyles.containerLogo}>
+        <View style={FormsStyles.containerWelcome}>
             <Text style={FormsStyles.title}> Seja Bem Vindo </Text>
             <Image
                 source={logo}
