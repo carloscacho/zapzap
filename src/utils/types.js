@@ -12,6 +12,7 @@ export const types = {
     MODIFICA_EMAIL_CONTATO: 'modifica_email_contato',
     ERRO_ADICIONAR_CONTATO: 'erro_adicionar_contato',
     ADICIONA_CONTATO_PARA_CONVERSA: 'AdicionaContatoParaConversa',
-    ADICIONAR_NOVO_CONTATO: 'adicionar_novo_contato'
+    ADICIONAR_NOVO_CONTATO: 'adicionar_novo_contato',
+    UP_LISTA_CONTATOS_USUARIO: 'up_lista_contatos_usuario'
 };
 

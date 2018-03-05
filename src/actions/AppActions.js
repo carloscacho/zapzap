@@ -84,3 +84,22 @@ export const adicionaNovoContato = () => ({
     type: types.ADICIONAR_NOVO_CONTATO,
 });
 
+//buscar contatos adicionados a lista do usuario
+export const contatosUsuarioFetch = () => {
+    //adiquire o valor do usuario logado
+    const { currentUser } = firebase.auth();
+
+    //dá inicio a busca dos contatos cadastrado
+    return (dispatch) => {
+        //converte o email do usuario para base 64
+        const emailUsuarioB64 = b64.encode(currentUser.email);
+
+        //busca se há um contatos cadastrados para usuario
+        firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
+        .on('value', snapshot => {
+            //para essa informação para um reducer
+            dispatch({ type: types.UP_LISTA_CONTATOS_USUARIO, payload: snapshot.val() });
+        });
+    };
+};
+

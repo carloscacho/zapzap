@@ -105,6 +105,18 @@ const FormsStyles = StyleSheet.create({
     containerAdd: {
         flex: 1,
         justifyContent: 'center'
+    },
+    listViewData: {
+        flex: 1,
+        padding: 20,
+        borderBottomWidth: 1,
+        borderColor: '#CCC'
+    },
+    listTextName: {
+        fontSize: 25
+    },
+    listTextEmail: {
+        fontSize: 20
     }
     
 });

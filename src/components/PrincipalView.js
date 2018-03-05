@@ -13,8 +13,8 @@ const initialLayout = {
 };
 
 //os dois compoents que compõem a Cena Principal
-const conversasRoute = () => <ContatosView />;
-const contatosRoute = () => <ConversasView />;
+const conversasRoute = () => <ConversasView />;
+const contatosRoute = () => <ContatosView />;
 
 const styles = StyleSheet.create({
   container: {
