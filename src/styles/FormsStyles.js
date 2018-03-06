@@ -123,8 +123,31 @@ const FormsStyles = StyleSheet.create({
     },
     listTextEmail: {
         fontSize: 20
+    },
+    //conversa view
+    mainConversa: {
+        flex: 1,
+        marginTop: 10,
+        backgroundColor: '#eee4dc',
+        padding: 10
+    },
+    chatView: {
+        flex: 1,
+        paddingBottom: 20
+    },
+    textBoxView: {
+        flexDirection: 'row',
+        height: 60
+    },
+    textBox: {
+        flex: 4,
+        backgroundColor: '#fff',
+        fontSize: 18
+    },
+    btnSend: {
+        flex: 1
     }
-    
+
 });
 
 

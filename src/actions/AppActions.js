@@ -103,3 +103,68 @@ export const contatosUsuarioFetch = () => {
     };
 };
 
+export const modificaMensagem = mensagem => (
+    {
+        type: types.MODIFICA_MENSAGEM,
+        payload: mensagem
+    }
+);
+
+export const enviaMensagem = (mensagem, contatoNome, contatoEmail) => dispatch => {
+    //dados do contato (contatoNome, contatoEmail)
+    //estão sendo recebidos por paramento
+
+    //dados do usuario
+    const { currentUser } = firebase.auth();
+    const usuarioEmail = currentUser.email;
+
+    //conversão para base 64
+    const usuarioEmailB64 = b64.encode(usuarioEmail);
+    const contatoEmailB64 = b64.encode(contatoEmail);
+
+    //primeiro registro a messagem para o usuario logado
+    firebase.database().ref(`/mensagens/${usuarioEmailB64}/${contatoEmailB64}`)
+    .push({ mensagem, tipo: 'e' }) //tipo e define envio
+    .then(() => {
+        //após o envio registra-se a messagem para o contato
+        firebase.database().ref(`/mensagens/${contatoEmailB64}/${usuarioEmailB64}`)
+        .push({ mensagem, tipo: 'r' }) //tipo de messagem recebido
+        .then(() => {
+            //ao final dos dois registros e acionado o dispatch
+            dispatch({
+                type: 'sendMensagemSucesso'
+            });
+        });
+    })
+    //iniciar o salvamento dos cabeçarios das conversas
+    .then(() => {
+        //salvar o cabeçario das conversas do usuario autenticado
+        firebase.database().ref(`/usuario_conversas/${usuarioEmailB64}/${contatoEmailB64}`)
+        .set({
+            nome: contatoNome, 
+            email: contatoEmail,
+            ultimaMensagem: mensagem,
+            tipo: 'e' 
+        });
+    })
+    //para o contato
+    .then(() => {
+        //1)capturar o nome do usuario primeiro ??
+        //verifica se o contato existe no Firebase
+        firebase.database().ref(`/contatos/${usuarioEmailB64}`)
+        .once('value')
+        .then(snapshot => {
+            //extrando os dados do usuario contindos no bd com lodash
+            const dadosUsuario = _.first(_.values(snapshot.val()));
+
+            //2)salvar o cabeçario  das conversas do contato 
+            firebase.database().ref(`/usuario_conversas/${contatoEmailB64}/${usuarioEmailB64}`)
+            .set({ 
+                nome: dadosUsuario.nome,
+                email: usuarioEmail,
+                ultimaMensagem: mensagem,
+                tipo: 'r' });
+            });
+    });
+};
+

@@ -13,6 +13,8 @@ export const types = {
     ERRO_ADICIONAR_CONTATO: 'erro_adicionar_contato',
     ADICIONA_CONTATO_PARA_CONVERSA: 'AdicionaContatoParaConversa',
     ADICIONAR_NOVO_CONTATO: 'adicionar_novo_contato',
-    UP_LISTA_CONTATOS_USUARIO: 'up_lista_contatos_usuario'
+    UP_LISTA_CONTATOS_USUARIO: 'up_lista_contatos_usuario',
+    MODIFICA_MENSAGEM: 'modifica_mensagem',
+    UP_LISTA_CONVERSA_USUARIO: 'up_lista_conversa',
 };
 

@@ -7,6 +7,7 @@ import FormCadastro from './FormCadastro';
 import Welcome from './Welcome';
 import PrincipalView from './PrincipalView';
 import AddContatosView from './principais/addContato';
+import Conversa from './principais/Conversa';
 
 //styles
 import FormsStyles from '../styles/FormsStyles';
@@ -41,6 +42,12 @@ const Routes = () => (
                 key='AddContato' 
                 component={AddContatosView} 
                 title='Adicionar Contato'
+                
+            /> 
+            <Scene 
+                key='Conversa' 
+                component={Conversa} 
+                title='Conversa Com: '
                 
             />    
         </Stack>

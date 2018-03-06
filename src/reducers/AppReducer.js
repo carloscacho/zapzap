@@ -4,10 +4,13 @@ import { types } from '../utils/types';
 const INITIAL_STATE = {
     contatoEmail: '',
     erroAdicionarContato: '',
-    addCadastroSucesso: false
+    addCadastroSucesso: false,
+    mensagem: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
+    console.log(action);
+    
     switch (action.type) {
         case types.MODIFICA_EMAIL_CONTATO: 
             return { ...state, contatoEmail: action.payload };
@@ -17,6 +20,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, addCadastroSucesso: true };
         case types.ADICIONAR_NOVO_CONTATO:
             return { ...state, addCadastroSucesso: false, contatoEmail: '' };
+        case types.MODIFICA_MENSAGEM:
+            return { ...state, mensagem: action.payload };
         default:
             return state;
     }

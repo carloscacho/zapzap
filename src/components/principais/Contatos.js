@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ListView } from 'react-native';
+import { View, Text, ListView, TouchableHighlight } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 //redux
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -7,6 +8,7 @@ import _ from 'lodash';
 import { contatosUsuarioFetch } from '../../actions/AppActions';
 //styles
 import styles from '../../styles/FormsStyles';
+
 
 class ContatosView extends Component {
 
@@ -27,19 +29,28 @@ class ContatosView extends Component {
         this.fonteDeDados = ds.cloneWithRows(contatos);
     }
 
+    RenderRowData(data) {
+        return (
+        <TouchableHighlight
+            onPress={() => Actions.Conversa(
+                { nome: data.nome, email: data.email, title: data.nome }
+            )}
+        >
+            <View style={styles.listViewData}>
+                <Text style={styles.listTextName}>{data.nome}</Text>
+                <Text style={styles.listTextEmail}>{data.email}</Text>
+            </View> 
+        </TouchableHighlight>
+        );
+    }
+
     render() {
         return (
             <View>
                 <ListView
                     enableEmptySections
                     dataSource={this.fonteDeDados}
-                    renderRow={data => (
-                        <View style={styles.listViewData}>
-                            <Text style={styles.listTextName}>{data.nome}</Text>
-                            <Text style={styles.listTextEmail}>{data.email}</Text>
-                        </View> 
-                        )
-                    }
+                    renderRow={data => this.RenderRowData(data)}
                 />
             </View>
         );
