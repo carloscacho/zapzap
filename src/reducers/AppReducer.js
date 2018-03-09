@@ -22,6 +22,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, addCadastroSucesso: false, contatoEmail: '' };
         case types.MODIFICA_MENSAGEM:
             return { ...state, mensagem: action.payload };
+        case types.SEND_MENSAGENS_SUCESSO:
+            return { ...state, mensagem: '' };
         default:
             return state;
     }

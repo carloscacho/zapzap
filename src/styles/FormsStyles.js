@@ -146,7 +146,33 @@ const FormsStyles = StyleSheet.create({
     },
     btnSend: {
         flex: 1
-    }
+    },
+    msgTipoE: {
+        alignItems: 'flex-end',
+        marginLeft: 40,
+        marginBottom: 5,
+        marginTop: 5
+    },
+    msgTextE: {
+        fontSize: 18,
+        color: '#000',
+        padding: 10,
+        backgroundColor: '#dbf5b4',
+        elevation: 1
+    },
+    msgTipoR: {
+        alignItems: 'flex-start',
+        marginRight: 40,
+        marginBottom: 5,
+        marginTop: 5
+    },
+    msgTextR: {
+        fontSize: 18,
+        color: '#000',
+        padding: 10,
+        backgroundColor: '#f7f7f7',
+        elevation: 1
+    },
 
 });
 

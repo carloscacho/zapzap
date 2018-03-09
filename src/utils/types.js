@@ -16,5 +16,7 @@ export const types = {
     UP_LISTA_CONTATOS_USUARIO: 'up_lista_contatos_usuario',
     MODIFICA_MENSAGEM: 'modifica_mensagem',
     UP_LISTA_CONVERSA_USUARIO: 'up_lista_conversa',
+    SEND_MENSAGENS_SUCESSO: 'send_mensagens_sucesso',
+    UP_LISTA_CONVERSAS_USUARIO: 'up_lista_conversas'
 };
 

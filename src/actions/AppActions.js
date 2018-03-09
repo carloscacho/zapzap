@@ -132,7 +132,7 @@ export const enviaMensagem = (mensagem, contatoNome, contatoEmail) => dispatch =
         .then(() => {
             //ao final dos dois registros e acionado o dispatch
             dispatch({
-                type: 'sendMensagemSucesso'
+                type: types.SEND_MENSAGENS_SUCESSO
             });
         });
     })
@@ -168,3 +168,35 @@ export const enviaMensagem = (mensagem, contatoNome, contatoEmail) => dispatch =
     });
 };
 
+export const conversaUsuarioFetch = contatoEmail => dispatch => {
+     //dados do usuario
+     const { currentUser } = firebase.auth();
+     const usuarioEmail = currentUser.email;
+ 
+     //conversão para base 64
+     const usuarioEmailB64 = b64.encode(usuarioEmail);
+     const contatoEmailB64 = b64.encode(contatoEmail);
+
+    firebase.database().ref(`/mensagens/${usuarioEmailB64}/${contatoEmailB64}`)
+    .on('value', snapshot => {
+        dispatch({ type: types.UP_LISTA_CONVERSA_USUARIO, payload: snapshot.val() });
+   });
+};
+
+export const conversasUsuarioFetch = () => {
+    //adiquire o valor do usuario logado
+    const { currentUser } = firebase.auth();
+
+    //dá inicio a busca dos contatos cadastrado
+    return (dispatch) => {
+        //converte o email do usuario para base 64
+        const emailUsuarioB64 = b64.encode(currentUser.email);
+
+        //busca se há um contatos cadastrados para usuario
+        firebase.database().ref(`/usuario_conversas/${emailUsuarioB64}`)
+        .on('value', snapshot => {
+            //para essa informação para um reducer
+            dispatch({ type: types.UP_LISTA_CONVERSAS_USUARIO, payload: snapshot.val() });
+        });
+    };
+};
