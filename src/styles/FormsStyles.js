@@ -46,7 +46,7 @@ const FormsStyles = StyleSheet.create({
         height: 45,
     },
     texts: {
-        fontSize: 20,
+        fontSize: 18,
         color: '#fff',
     },
     textErro: {

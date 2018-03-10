@@ -4,6 +4,9 @@ import { View, Text, StatusBar, Image, TouchableHighlight } from 'react-native';
 import { TabBar } from 'react-native-tab-view';
 import { Actions } from 'react-native-router-flux';
 
+//firebase
+import firebase from 'firebase';
+
 import { connect } from 'react-redux';
 import { adicionaNovoContato } from '../../actions/AppActions';
 
@@ -43,7 +46,17 @@ const TabBarMenu = (props) => (
             </View>
             {/* Botão Sair para realiza logout no app */}
             <View style={styles.viewSair}>
+            <TouchableHighlight
+                    onPress={() => {
+                        firebase.auth().signOut()
+                        .then(
+                            Actions.pop()
+                        );
+                    }}
+                    underlayColor='#114D44'
+            >
                 <Text style={styles.btnSair}>Sair</Text>
+            </TouchableHighlight>
             </View>
         </View>
         </View>

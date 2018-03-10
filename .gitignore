@@ -53,3 +53,4 @@ buck-out/
 */fastlane/screenshots
 
 src/firebase/config.js
+android/app/my-release-key.keystore
