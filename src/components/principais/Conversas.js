@@ -46,19 +46,20 @@ class ConversasView extends React.Component {
         </TouchableHighlight>
         );
     }
-
+    
+    // render da mensagem que foi enviada do usuario para o contato
     renderEnvia(texto) {
         return (
             <Text style={{ color: '#54a394', fontSize: 18 }}> {texto}</Text>
         );
     }
-
+    //render da mensagem que foi enviada do contato para o usuario
     renderRecebe(texto) {
         return (
             <Text style={{ color: '#3399ff', fontSize: 18 }}> {texto}</Text>
         );
     }
-
+    //reder da list View
     render() {
         return (
             <View>
@@ -72,6 +73,8 @@ class ConversasView extends React.Component {
     }
     
 }
+
+//aquisição de todas os messagens trocadas
 const mapStateToProps = state => {
     const conversasCadastradas = _.map(state.LstConvsRdc, (val, uid) => (
         { ...val, uid }
