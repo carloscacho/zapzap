@@ -9,6 +9,7 @@
   "dependencies": {
     "base-64": "^0.1.0",
     "firebase": "^4.10.0",
+    "hoek": "^5.0.3",
     "lodash": "^4.17.5",
     "react": "16.2.0",
     "react-native": "0.53.3",
